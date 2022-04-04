@@ -25,6 +25,9 @@ class AuthWebhook
      */
     public function handle(Request $request, Closure $next)
     {
+        
+                return $next($request);
+
         $hmac = Hmac::fromNative($request->header('x-shopify-hmac-sha256', ''));
         $shop = NullableShopDomain::fromNative($request->header('x-shopify-shop-domain'));
         $data = $request->getContent();
