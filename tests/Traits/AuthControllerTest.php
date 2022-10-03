@@ -23,7 +23,7 @@ class AuthControllerTest extends TestCase
         // Run the request
         $response = $this->call('post', '/authenticate', ['shop' => 'example.myshopify.com']);
 
-        // Check the view
+        // Check the redirect happens and location is set properly in the header.
         $response->assertViewHas('shopDomain', 'example.myshopify.com');
         $response->assertViewHas(
             'authUrl',
